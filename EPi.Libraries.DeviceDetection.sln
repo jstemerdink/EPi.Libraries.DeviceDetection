@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.DeviceDetection", "EPi.Libraries.DeviceDetection\EPi.Libraries.DeviceDetection.csproj", "{CBD85CE7-7977-48CE-9716-17CE72EC145F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.DeviceDetection.FiftyOneCloud", "EPi.Libraries.DeviceDetection.FiftyOneCloud\EPi.Libraries.DeviceDetection.FiftyOneCloud.csproj", "{A8C659FB-222E-45A0-8D5D-E4633030A092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.DeviceDetection.FiftyOne", "EPi.Libraries.DeviceDetection.FiftyOne\EPi.Libraries.DeviceDetection.FiftyOne.csproj", "{45136482-D2A6-4B3F-B95D-27CB7DF6B76B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{1944BD2D-F842-4785-BAAE-42E8A410E2A3}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.DeviceDetection.WurflCloud", "EPi.Libraries.DeviceDetection.WurflCloud\EPi.Libraries.DeviceDetection.WurflCloud.csproj", "{D900C0DD-1925-4F8F-97B9-F115B25F5BE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.DeviceDetection.Wurfl", "EPi.Libraries.DeviceDetection.Wurfl\EPi.Libraries.DeviceDetection.Wurfl.csproj", "{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBD85CE7-7977-48CE-9716-17CE72EC145F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBD85CE7-7977-48CE-9716-17CE72EC145F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBD85CE7-7977-48CE-9716-17CE72EC145F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBD85CE7-7977-48CE-9716-17CE72EC145F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C659FB-222E-45A0-8D5D-E4633030A092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C659FB-222E-45A0-8D5D-E4633030A092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C659FB-222E-45A0-8D5D-E4633030A092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C659FB-222E-45A0-8D5D-E4633030A092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45136482-D2A6-4B3F-B95D-27CB7DF6B76B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45136482-D2A6-4B3F-B95D-27CB7DF6B76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45136482-D2A6-4B3F-B95D-27CB7DF6B76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45136482-D2A6-4B3F-B95D-27CB7DF6B76B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D900C0DD-1925-4F8F-97B9-F115B25F5BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D900C0DD-1925-4F8F-97B9-F115B25F5BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D900C0DD-1925-4F8F-97B9-F115B25F5BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D900C0DD-1925-4F8F-97B9-F115B25F5BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

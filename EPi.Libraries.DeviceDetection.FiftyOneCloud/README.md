@@ -7,19 +7,11 @@ By Jeroen Stemerdink
 [![Platform](https://img.shields.io/badge/platform-.NET 4.5-blue.svg?style=flat)](https://msdn.microsoft.com/en-us/library/w0x726c2%28v=vs.110%29.aspx)
 [![Platform](https://img.shields.io/badge/EPiServer-%209.0.0-orange.svg?style=flat)](http://world.episerver.com/cms/)
 
-## Parts
+## Description
 
-[Base for detection services](EPi.Libraries.DeviceDetection/README.md)
+51degrees cloud device detection service for use with EPi.Libraries.DeviceDetection.
 
-[51 degrees cloud detection service](EPi.Libraries.DeviceDetection.FiftyOneCloud/README.md)
-
-[51 degrees on prmise detection service](EPi.Libraries.DeviceDetection.FiftyOne/README.md)
-
-[Wurfl on prmise detection service](EPi.Libraries.DeviceDetection.Wurfl/README.md)
-
-[Wurflcloud detection service](EPi.Libraries.DeviceDetection.WurflCloud/README.md)
-
-[RegEx detection service](EPi.Libraries.DeviceDetection.RegEx/README.md)
+Don't forget to add an AppSetting "51degrees:licensekey" with your key.
 
 
 > *Powered by ReSharper*

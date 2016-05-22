@@ -1,0 +1,1 @@
+﻿Local 51degrees device detection service for use with EPi.Libraries.DeviceDetection
