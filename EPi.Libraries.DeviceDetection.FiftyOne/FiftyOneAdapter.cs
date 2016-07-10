@@ -48,6 +48,11 @@ namespace EPi.Libraries.DeviceDetection.FiftyOne
                 return;
             }
 
+            if (httpContextBase == null)
+            {
+                return;
+            }
+
             // Perform device detection on the headers provided in the request.
             Match match = WebProvider.ActiveProvider.Match(httpContextBase.Request.Headers);
 

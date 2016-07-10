@@ -14,6 +14,7 @@
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <Rule Id="SA1633" Action="None" />
+    <Rule Id="SA1404" Action="Info" />
   </Rules>
   <Rules AnalyzerId="ExceptionAnalyzer" RuleNamespace="ExceptionAnalyzer">
     <Rule Id="EA003" Action="Info" />

@@ -32,6 +32,11 @@ namespace EPi.Libraries.DeviceDetection.Wurfl
         /// <param name="deviceInfo">The <see cref="WURFL.IDevice" /> for the visitor.</param>
         public WurflAdapter(IDevice deviceInfo)
         {
+            if (deviceInfo == null)
+            {
+                return;
+            }
+
             // Desktop, App, Tablet, Smartphone, Feature Phone, Smart-TV, Robot, Other non-Mobile, Other Mobile
             this.DeviceType = deviceInfo.GetVirtualCapability("form_factor");
 

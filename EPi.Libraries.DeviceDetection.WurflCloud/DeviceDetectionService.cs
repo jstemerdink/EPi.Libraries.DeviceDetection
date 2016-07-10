@@ -51,7 +51,7 @@ namespace EPi.Libraries.DeviceDetection.WurflCloud
         /// </summary>
         /// <param name="httpContextBase">The HTTP context base.</param>
         /// <returns>DeviceTypes.</returns>
-        /// <exception cref="System.ApplicationException">[DeviceInfo detection] No license key found. Add an appsetting called \wurfl: apikey\ with your cloud service key.</exception>
+        /// <exception cref="System.NotSupportedException">[DeviceInfo detection] No license key found. Add an appsetting called \wurfl: apikey\ with your cloud service key.</exception>
         public IDeviceInfo GetDevice(HttpContextBase httpContextBase)
         {
             IDeviceInfo deviceInfo = new DeviceInfo();
@@ -63,7 +63,7 @@ namespace EPi.Libraries.DeviceDetection.WurflCloud
 
             if (string.IsNullOrWhiteSpace(ApiKey))
             {
-                throw new ApplicationException(
+                throw new NotSupportedException(
                     "[DeviceInfo detection] No license key found. Add an appsetting called \"wurfl: apikey\" with your cloud service key.");
             }
 

@@ -31,6 +31,11 @@ namespace EPi.Libraries.DeviceDetection.WurflCloud
         /// <param name="isFullVersion">if set to <c>true</c> [is full version].</param>
         public WurflAdapter(ScientiaMobile.WurflCloud.Device.DeviceInfo deviceInfo, bool isFullVersion)
         {
+            if (deviceInfo == null)
+            {
+                return;
+            }
+
             // Desktop, App, Tablet, Smartphone, Feature Phone, Smart-TV, Robot, Other non-Mobile, Other Mobile
             this.DeviceType = deviceInfo.Get("form_factor");
 
