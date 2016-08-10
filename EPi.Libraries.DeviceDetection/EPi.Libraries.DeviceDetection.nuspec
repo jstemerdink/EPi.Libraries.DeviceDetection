@@ -15,7 +15,7 @@
     <copyright>Copyright © Jeroen Stemerdink 2016</copyright>
     <tags>mobile device detection</tags>
     <dependencies>
-      <dependency id="EPiServer.CMS.Core" version="[9.0.3, 10.0)" />
+      <dependency id="EPiServer.CMS.Core" version="[9.7.3, 10.0)" />
     </dependencies>
   </metadata>
   <files>
