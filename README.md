@@ -12,7 +12,7 @@ By Jeroen Stemerdink
 [![Stories in Backlog](https://badge.waffle.io/jstemerdink/EPi.Libraries.DeviceDetection.svg?label=enhancement&title=Backlog)](http://waffle.io/jstemerdink/EPi.Libraries.DeviceDetection)
 
 ## About
-Get some basic info about the device that's browsing your website. Use Wurfl or 51degrees to get the information. 
+Get some basic info about the device that's browsing your website. Use wurfl or 51degrees to get the information. 
 Or create use your own by creating a provider for it by implementing ```IDeviceDetectionService```. It will be picked up automatically.
 
 ## Parts
@@ -21,13 +21,11 @@ Or create use your own by creating a provider for it by implementing ```IDeviceD
 
 [51 degrees cloud detection service](EPi.Libraries.DeviceDetection.FiftyOneCloud/README.md)
 
-[51 degrees on prmise detection service](EPi.Libraries.DeviceDetection.FiftyOne/README.md)
+[51 degrees on premise detection service](EPi.Libraries.DeviceDetection.FiftyOne/README.md)
 
-[Wurfl on prmise detection service](EPi.Libraries.DeviceDetection.Wurfl/README.md)
+[Wurfl on premise detection service](EPi.Libraries.DeviceDetection.Wurfl/README.md)
 
 [Wurflcloud detection service](EPi.Libraries.DeviceDetection.WurflCloud/README.md)
-
-[RegEx detection service](EPi.Libraries.DeviceDetection.RegEx/README.md)
 
 
 > *Powered by ReSharper*
