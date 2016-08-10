@@ -63,11 +63,11 @@ namespace EPi.Libraries.DeviceDetection.Wurfl
             }
             catch (NotSupportedException notSupportedException)
             {
-                Log.Error(notSupportedException.Message, notSupportedException);
+                Log.Error("[Device detection] {0}.\r\n {1}", notSupportedException.Message, notSupportedException);
             }
             catch (NotImplementedException notImplementedException)
             {
-                Log.Error(notImplementedException.Message, notImplementedException);
+                Log.Error("[Device detection] {0}.\r\n {1}", notImplementedException.Message, notImplementedException);
             }
 
             return deviceInfo;

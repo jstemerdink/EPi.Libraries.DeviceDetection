@@ -46,10 +46,56 @@ namespace EPi.Libraries.DeviceDetection
             new ConcurrentDictionary<string, IDeviceInfo>();
 
         /// <summary>
-        /// Gets or sets the device detection service.
+        /// The device detection service
         /// </summary>
-        /// <value>The device detection service.</value>
-        private Injected<IDeviceDetectionService> DeviceDetectionService { get; set; }
+        private readonly IDeviceDetectionService deviceDetectionService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeviceInformationService"/> class.
+        /// </summary>
+        /// <param name="deviceDetectionService">The device detection service.</param>
+        public DeviceInformationService(IDeviceDetectionService deviceDetectionService)
+        {
+            this.deviceDetectionService = deviceDetectionService;
+        }
+
+        /// <summary>
+        /// Gets the device information.
+        /// </summary>
+        /// <returns>DeviceInfo.</returns>
+        public IDeviceInfo GetDeviceInfo()
+        {
+            try
+            {
+                return this.GetDeviceInfo(HttpContext.Current);
+            }
+            catch (ArgumentNullException argumentNullException)
+            {
+                Log.Error("[Device detection] {0}.\r\n {1}", argumentNullException.Message, argumentNullException);
+            }
+
+            return new DeviceInfo();
+        }
+
+        /// <summary>
+        /// Gets the device information.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context.</param>
+        /// <returns>DeviceInfo.</returns>
+        public IDeviceInfo GetDeviceInfo(HttpContext httpContext)
+        {
+            try
+            {
+                HttpContextWrapper contextWrapper = new HttpContextWrapper(httpContext);
+                return this.GetDeviceInfo(contextWrapper);
+            }
+            catch (ArgumentNullException argumentNullException)
+            {
+                Log.Error("[Device detection] {0}.\r\n {1}", argumentNullException.Message, argumentNullException);
+            }
+
+            return new DeviceInfo();
+        }
 
         /// <summary>
         /// Gets the device information.
@@ -74,24 +120,24 @@ namespace EPi.Libraries.DeviceDetection
                     return deviceInfo;
                 }
 
-                deviceInfo = this.DeviceDetectionService.Service.GetDevice(httpContextBase);
+                deviceInfo = this.deviceDetectionService.GetDevice(httpContextBase);
                 DeviceInfoCache.TryAdd(userAgent, deviceInfo);
             }
             catch (NotImplementedException notImplementedException)
             {
-                Log.Error(notImplementedException.Message, notImplementedException);
+                Log.Error("[Device detection] {0}.\r\n {1}", notImplementedException.Message, notImplementedException);
             }
             catch (NotSupportedException notSupportedException)
             {
-                Log.Error(notSupportedException.Message, notSupportedException);
+                Log.Error("[Device detection] {0}.\r\n {1}", notSupportedException.Message, notSupportedException);
             }
             catch (ArgumentNullException argumentNullException)
             {
-                Log.Error(argumentNullException.Message, argumentNullException);
+                Log.Error("[Device detection] {0}.\r\n {1}", argumentNullException.Message, argumentNullException);
             }
             catch (OverflowException overflowException)
             {
-                Log.Error(overflowException.Message, overflowException);
+                Log.Error("[Device detection] {0}.\r\n {1}", overflowException.Message, overflowException);
             }
 
             return deviceInfo;

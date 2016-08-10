@@ -34,30 +34,35 @@ namespace EPi.Libraries.DeviceDetection
         /// Gets or sets a value indicating whether this instance is a console.
         /// </summary>
         /// <value><c>true</c> if this instance is a console; otherwise, <c>false</c>.</value>
+        /// <remarks>Not available in wurfl</remarks>
         bool IsConsole { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is an e-reader.
         /// </summary>
         /// <value><c>true</c> if this instance is an e-reader; otherwise, <c>false</c>.</value>
+        /// <remarks>Not available in wurfl, wurfl full version</remarks>
         bool IsEReader { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is a media hub.
         /// </summary>
         /// <value><c>true</c> if this instance is a media hub; otherwise, <c>false</c>.</value>
+        /// <remarks>Not available in wurfl, wurfl full version</remarks>
         bool IsMediaHub { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is a mobile device.
         /// </summary>
         /// <value><c>true</c> if this instance is a mobile device; otherwise, <c>false</c>.</value>
+        /// <remarks>Not available in wurfl</remarks>
         bool IsMobile { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance has a small screen.
         /// </summary>
         /// <value><c>true</c> if this instance has a small screen; otherwise, <c>false</c>.</value>
+        /// <remarks>Not available in wurfl</remarks>
         bool IsSmallScreen { get; set; }
 
         /// <summary>
@@ -70,6 +75,7 @@ namespace EPi.Libraries.DeviceDetection
         /// Gets or sets a value indicating whether this instance is a smartwatch.
         /// </summary>
         /// <value><c>true</c> if this instance is a smartwatch; otherwise, <c>false</c>.</value>
+        /// <remarks>Not available in wurfl, wurfl full version</remarks>
         bool IsSmartWatch { get; set; }
 
         /// <summary>
@@ -88,12 +94,14 @@ namespace EPi.Libraries.DeviceDetection
         /// Gets or sets the height of the screen in pixels.
         /// </summary>
         /// <value>The height of the screen in pixels.</value>
+        /// <remarks>Not available in wurfl</remarks>
         int ScreenPixelsHeight { get; set; }
 
         /// <summary>
         /// Gets or sets the width of the screen in pixels.
         /// </summary>
         /// <value>The width of the screen in pixels.</value>
+        /// <remarks>Not available in wurfl</remarks>
         int ScreenPixelsWidth { get; set; }
     }
 }

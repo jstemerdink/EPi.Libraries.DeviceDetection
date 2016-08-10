@@ -58,7 +58,7 @@ namespace EPi.Libraries.DeviceDetection.FiftyOneCloud
             if (string.IsNullOrWhiteSpace(LicenseKey))
             {
                 throw new InvalidOperationException(
-                    "[DeviceInfo detection] No license key found. Add an appsetting called \"51degrees:licensekey\" with your cloud service key.");
+                    "[Device detection] No license key found. Add an appsetting called \"51degrees:licensekey\" with your cloud service key.");
             }
 
             IDeviceInfo deviceInfo = new DeviceInfo();
@@ -89,23 +89,23 @@ namespace EPi.Libraries.DeviceDetection.FiftyOneCloud
             }
             catch (NotImplementedException notImplementedException)
             {
-                Log.Error(notImplementedException.Message, notImplementedException);
+                Log.Error("[Device detection] {0}.\r\n {1}", notImplementedException.Message, notImplementedException);
             }
             catch (NotSupportedException notSupportedException)
             {
-                Log.Error(notSupportedException.Message, notSupportedException);
+                Log.Error("[Device detection] {0}.\r\n {1}", notSupportedException.Message, notSupportedException);
             }
             catch (WebException webException)
             {
-                Log.Error(webException.Message, webException);
+                Log.Error("[Device detection] {0}.\r\n {1}", webException.Message, webException);
             }
             catch (ArgumentNullException argumentNullException)
             {
-                Log.Error(argumentNullException.Message, argumentNullException);
+                Log.Error("[Device detection] {0}.\r\n {1}", argumentNullException.Message, argumentNullException);
             }
             catch (FormatException formatException)
             {
-                Log.Error(formatException.Message, formatException);
+                Log.Error("[Device detection] {0}.\r\n {1}", formatException.Message, formatException);
             }
 
             return deviceInfo;

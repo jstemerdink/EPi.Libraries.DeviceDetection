@@ -19,13 +19,21 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 namespace EPi.Libraries.DeviceDetection.FiftyOneCloud
 {
+    using System;
     using System.Globalization;
+
+    using EPiServer.Logging;
 
     /// <summary>
     ///     Adapts the DeviceModel class to the DeviceInfo class.
     /// </summary>
     public class FiftyOneCloudAdapter : DeviceInfo
     {
+        /// <summary>
+        /// The <see cref="ILogger"/> instance
+        /// </summary>
+        private static readonly ILogger Log = LogManager.GetLogger();
+
         /// <summary>
         ///     Initializes a new instance of the <see cref=" FiftyOneCloudAdapter" /> class.
         /// </summary>
@@ -39,21 +47,24 @@ namespace EPi.Libraries.DeviceDetection.FiftyOneCloud
 
             this.DeviceType = deviceModel.Values.DeviceType[0];
 
-            double screenPixelsWidth;
-            double.TryParse(
-                deviceModel.Values.ScreenPixelsWidth[0],
-                NumberStyles.Any,
-                CultureInfo.CreateSpecificCulture("en-US"),
-                out screenPixelsWidth);
-            this.ScreenPixelsWidth = (int)screenPixelsWidth;
+            try
+            {
+                double screenPixelsWidth;
+                double.TryParse(deviceModel.Values.ScreenPixelsWidth[0], NumberStyles.Any, CultureInfo.CreateSpecificCulture("en-US"), out screenPixelsWidth);
+                this.ScreenPixelsWidth = (int)screenPixelsWidth;
 
-            double screenPixelsHeight;
-            double.TryParse(
-                deviceModel.Values.ScreenPixelsHeight[0],
-                NumberStyles.Any,
-                CultureInfo.CreateSpecificCulture("en-US"),
-                out screenPixelsHeight);
-            this.ScreenPixelsHeight = (int)screenPixelsHeight;
+                double screenPixelsHeight;
+                double.TryParse(deviceModel.Values.ScreenPixelsHeight[0], NumberStyles.Any, CultureInfo.CreateSpecificCulture("en-US"), out screenPixelsHeight);
+                this.ScreenPixelsHeight = (int)screenPixelsHeight;
+            }
+            catch (ArgumentException argumentException)
+            {
+                Log.Error("[Device detection] {0}.\r\n {1}", argumentException.Message, argumentException);
+            }
+            catch (NullReferenceException nullReferenceException)
+            {
+                Log.Error("[Device detection] {0}.\r\n {1}", nullReferenceException.Message, nullReferenceException);
+            }
 
             bool isTv;
             bool.TryParse(deviceModel.Values.IsTv[0], out isTv);

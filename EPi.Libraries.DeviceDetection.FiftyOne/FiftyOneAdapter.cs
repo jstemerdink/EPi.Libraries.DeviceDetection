@@ -19,12 +19,12 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 namespace EPi.Libraries.DeviceDetection.FiftyOne
 {
-    using System.Linq;
-    using System.Reflection;
+    using System;
     using System.Web;
 
+    using EPiServer.Logging;
+
     using global::FiftyOne.Foundation.Mobile.Detection;
-    using global::FiftyOne.Foundation.Mobile.Detection.Entities;
 
     /// <summary>
     ///     Adapts the DeviceInfo class to the DeviceBase class.
@@ -32,10 +32,9 @@ namespace EPi.Libraries.DeviceDetection.FiftyOne
     public class FiftyOneAdapter : DeviceInfo
     {
         /// <summary>
-        ///     HTML used if the property has no value.
+        /// The <see cref="ILogger"/> instance
         /// </summary>
-        private const string SwitchHtml =
-            "<a href=\"" + "https://51degrees.com/compare-data-options\">" + "Switch Data Set</a>";
+        private static readonly ILogger Log = LogManager.GetLogger();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FiftyOneAdapter" /> class.
@@ -54,53 +53,33 @@ namespace EPi.Libraries.DeviceDetection.FiftyOne
             }
 
             // Perform device detection on the headers provided in the request.
-            Match match = WebProvider.ActiveProvider.Match(httpContextBase.Request.Headers);
-
-            foreach (PropertyInfo classProperty in
-                this.GetType().GetProperties().Where(p => p.PropertyType == typeof(string)))
+            try
             {
-                Values values = match[classProperty.Name];
-
-                if ((values != null) && (values.Count > 0))
-                {
-                    // There is a value for the property. Set the value
-                    // now.
-                    classProperty.SetValue(this, values.ToString());
-                }
-                else
-                {
-                    // Property is not contained in the active 51Degrees
-                    // data set. Display a link to switch the data set
-                    // and re-run the example.
-                    classProperty.SetValue(this, SwitchHtml);
-                }
+                Match match = WebProvider.ActiveProvider.Match(httpContextBase.Request.Headers);
+                this.SetProperties(match);
             }
+            catch (NotImplementedException notImplementedException)
+            {
+                Log.Error("[Device detection] {0}.\r\n {1}", notImplementedException.Message, notImplementedException);
+            }
+        }
 
+        private void SetProperties(Match match)
+        {
             this.DeviceType = match["DeviceType"] != null ? match["DeviceType"].ToString() : string.Empty;
-
             this.ScreenPixelsWidth = match["ScreenPixelsWidth"] != null ? (int)match["ScreenPixelsWidth"].ToDouble() : 0;
-
             this.ScreenPixelsHeight = match["ScreenPixelsHeight"] != null
                                           ? (int)match["ScreenPixelsHeight"].ToDouble()
                                           : 0;
-
-            this.IsTv = match["IsTv"] != null ? match["IsTv"].ToBool() : false;
-
-            this.IsSmartWatch = match["IsSmartWatch"] != null ? match["IsSmartWatch"].ToBool() : false;
-
-            this.IsSmartPhone = match["IsSmartPhone"] != null ? match["IsSmartPhone"].ToBool() : false;
-
-            this.IsSmallScreen = match["IsSmallScreen"] != null ? match["IsSmallScreen"].ToBool() : false;
-
-            this.IsMediaHub = match["IsMediaHub"] != null ? match["IsMediaHub"].ToBool() : false;
-
-            this.IsEReader = match["IsEReader"] != null ? match["IsEReader"].ToBool() : false;
-
-            this.IsConsole = match["IsConsole"] != null ? match["IsConsole"].ToBool() : false;
-
-            this.IsTablet = match["IsTablet"] != null ? match["IsTablet"].ToBool() : false;
-
-            this.IsMobile = match["IsMobile"] != null ? match["IsMobile"].ToBool() : false;
+            this.IsTv = (match["IsTv"] != null) && match["IsTv"].ToBool();
+            this.IsSmartWatch = (match["IsSmartWatch"] != null) && match["IsSmartWatch"].ToBool();
+            this.IsSmartPhone = (match["IsSmartPhone"] != null) && match["IsSmartPhone"].ToBool();
+            this.IsSmallScreen = (match["IsSmallScreen"] != null) && match["IsSmallScreen"].ToBool();
+            this.IsMediaHub = (match["IsMediaHub"] != null) && match["IsMediaHub"].ToBool();
+            this.IsEReader = (match["IsEReader"] != null) && match["IsEReader"].ToBool();
+            this.IsConsole = (match["IsConsole"] != null) && match["IsConsole"].ToBool();
+            this.IsTablet = (match["IsTablet"] != null) && match["IsTablet"].ToBool();
+            this.IsMobile = (match["IsMobile"] != null) && match["IsMobile"].ToBool();
         }
     }
 }

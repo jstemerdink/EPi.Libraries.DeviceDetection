@@ -64,7 +64,7 @@ namespace EPi.Libraries.DeviceDetection.WurflCloud
             if (string.IsNullOrWhiteSpace(ApiKey))
             {
                 throw new NotSupportedException(
-                    "[DeviceInfo detection] No license key found. Add an appsetting called \"wurfl: apikey\" with your cloud service key.");
+                    "[Device detection] No license key found. Add an appsetting called \"wurfl: apikey\" with your cloud service key.");
             }
 
             bool isFullVersion;
