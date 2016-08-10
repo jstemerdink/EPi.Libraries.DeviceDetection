@@ -16,7 +16,7 @@
     <tags>mobile device detection</tags>
     <dependencies>
       <dependency id="EPiServer.CMS.Core" version="[9.0.3, 10.0)" />
-      <dependency id="EPi.Libraries.DeviceDetection" version="[1.0.0, 2,0,0)" />
+      <dependency id="EPi.Libraries.DeviceDetection" version="[1.0.0, 2.0.0)" />
       <dependency id="51Degrees.mobi" version="3.2.7.4" />
     </dependencies>
   </metadata>
