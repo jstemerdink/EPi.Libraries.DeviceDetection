@@ -11,6 +11,10 @@ By Jeroen Stemerdink
 [![Dependency Status](https://www.versioneye.com/user/projects/57aad478c75d64003af415b5/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57aad478c75d64003af415b5)
 [![Stories in Backlog](https://badge.waffle.io/jstemerdink/EPi.Libraries.DeviceDetection.svg?label=enhancement&title=Backlog)](http://waffle.io/jstemerdink/EPi.Libraries.DeviceDetection)
 
+## About
+Get some basic info about the device that's browsing your website. Use Wurfl or 51degrees to get the information. 
+Or create use your own by creating a provider for it by implementing ```IDeviceDetectionService```. It will be picked up automatically.
+
 ## Parts
 
 [Base for detection services](EPi.Libraries.DeviceDetection/README.md)
