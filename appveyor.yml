@@ -6,7 +6,7 @@ environment:
   myget_token: 'secure: 9Z+KYPk2hI7hg9kYLv/N13fvoqcYCP96isNUkRrKu0v87cw85H62oe/DCwpqvBXF'
 install:
 - choco install gitversion.portable -pre -y
-- choco install resharper-clt -y
+- choco install resharper-clt.portable -y
 - cmd: nuget sources add -Name EPiServerFeed -Source http://nuget.episerver.com/feed/packages.svc/
 before_build:
 - cmd: nuget restore
