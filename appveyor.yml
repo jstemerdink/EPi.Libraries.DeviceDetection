@@ -1,0 +1,58 @@
+version: 1.0.{build}
+#image: Visual Studio 2013
+configuration: Release
+environment:
+  github_token: 'secure: TaDEavUfTj6EgwcO7y5njQVS5Z9bBU/fVFuSApo5XEO6FSBT5UzJQmyJjbhIFDZb'
+  myget_token: 'secure: 9Z+KYPk2hI7hg9kYLv/N13fvoqcYCP96isNUkRrKu0v87cw85H62oe/DCwpqvBXF'
+install:
+- choco install gitversion.portable -pre -y
+- cmd: nuget sources add -Name EPiServerFeed -Source http://nuget.episerver.com/feed/packages.svc/
+before_build:
+- cmd: nuget restore
+- ps: gitversion /l console /output buildserver /updateAssemblyInfo
+build:
+  project: EPi.Libraries.Commerce.ExchangeRates.sln
+  verbosity: normal
+after_build:
+- cmd: nuget pack EPi.Libraries.DeviceDetection\EPi.Libraries.DeviceDetection.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+- cmd: appveyor PushArtifact "EPi.Libraries.Commerce.ExchangeRates.%GitVersion_NuGetVersion%.nupkg"
+- cmd: nuget pack EPi.Libraries.DeviceDetection.FiftyOne\EPi.Libraries.DeviceDetection.FiftyOne.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.FiftyOne.%GitVersion_NuGetVersion%.nupkg"
+- cmd: nuget pack EPi.Libraries.DeviceDetection.FiftyOneCloud\EPi.Libraries.DeviceDetection.FiftyOneCloud.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.FiftyOneCloud.%GitVersion_NuGetVersion%.nupkg"
+- cmd: nuget pack EPi.Libraries.DeviceDetection.Wurfl\EPi.Libraries.DeviceDetection.Wurfl.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.Wurfl.%GitVersion_NuGetVersion%.nupkg"
+- cmd: nuget pack EPi.Libraries.DeviceDetection.WurflCloud\EPi.Libraries.DeviceDetection.WurflCloud.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.WurflCloud.%GitVersion_NuGetVersion%.nupkg"
+- 7z a EPi.Libraries.DeviceDetection.%GitVersion_NuGetVersion%.zip %APPVEYOR_BUILD_FOLDER%\EPi.Libraries.DeviceDetection\bin\Release\EPi.Libraries.DeviceDetection.dll
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.%GitVersion_NuGetVersion%.zip"
+- 7z a EPi.Libraries.DeviceDetection.FiftyOne.%GitVersion_NuGetVersion%.zip %APPVEYOR_BUILD_FOLDER%\EPi.Libraries.DeviceDetection.FiftyOne\bin\Release\EPi.Libraries.DeviceDetection.FiftyOne.dll
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.FiftyOne.%GitVersion_NuGetVersion%.zip"
+- 7z a EPi.Libraries.DeviceDetection.FiftyOneCloud.%GitVersion_NuGetVersion%.zip %APPVEYOR_BUILD_FOLDER%\EPi.Libraries.DeviceDetection.FiftyOneCloud\bin\Release\EPi.Libraries.DeviceDetection.FiftyOneCloud.dll
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.FiftyOneCloud.%GitVersion_NuGetVersion%.zip"
+- 7z a EPi.Libraries.DeviceDetection.Wurfl.%GitVersion_NuGetVersion%.zip %APPVEYOR_BUILD_FOLDER%\EPi.Libraries.DeviceDetection.Wurfl\bin\Release\EPi.Libraries.DeviceDetection.Wurfl.dll
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.Wurfl.%GitVersion_NuGetVersion%.zip"
+- 7z a EPi.Libraries.DeviceDetection.WurflCloud.%GitVersion_NuGetVersion%.zip %APPVEYOR_BUILD_FOLDER%\EPi.Libraries.DeviceDetection.WurflCloud\bin\Release\EPi.Libraries.DeviceDetection.WurflCloud.dll
+- cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.WurflCloud.%GitVersion_NuGetVersion%.zip"
+before_package:
+- ps: >-
+    Write-Host -NoNewline "Installing NuGet 3.3.0..."
+
+    if (Test-Path 'C:\Tools\NuGet3') { $nugetDir = 'C:\Tools\NuGet3' } else { $nugetDir = 'C:\Tools\NuGet' }
+deploy:
+- provider: NuGet
+  server: https://www.myget.org/F/epi-libraries/api/v2/package
+  api_key:
+    secure: 9Z+KYPk2hI7hg9kYLv/N13fvoqcYCP96isNUkRrKu0v87cw85H62oe/DCwpqvBXF
+  skip_symbols: true
+  artifact: /.*\.nupkg/
+  on:
+    branch: develop             # release from develop branch only
+    appveyor_repo_tag: true     # deploy on tag push only
+- provider: GitHub
+  auth_token:
+    secure: TaDEavUfTj6EgwcO7y5njQVS5Z9bBU/fVFuSApo5XEO6FSBT5UzJQmyJjbhIFDZb
+  artifact: /.*\.zip/
+  on:
+    branch: master              # release from master branch only
+    appveyor_repo_tag: true     # deploy on tag push only
