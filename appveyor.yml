@@ -15,8 +15,8 @@ build:
   project: EPi.Libraries.DeviceDetection.sln
   verbosity: normal
 after_build:
-- cmd: dupfinder.exe EPi.Libraries.DeviceDetection.sln
-- cmd: InspectCode.exe EPi.Libraries.DeviceDetection.sln
+#- cmd: dupfinder.exe EPi.Libraries.DeviceDetection.sln
+- cmd: InspectCode.exe EPi.Libraries.DeviceDetection.sln -x=StyleCop.StyleCop;PowerToys.CyclomaticComplexity
 - cmd: nuget pack EPi.Libraries.DeviceDetection\EPi.Libraries.DeviceDetection.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
 - cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.%GitVersion_NuGetVersion%.nupkg"
 - cmd: nuget pack EPi.Libraries.DeviceDetection.FiftyOne\EPi.Libraries.DeviceDetection.FiftyOne.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
