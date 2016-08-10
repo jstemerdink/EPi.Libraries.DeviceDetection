@@ -6,6 +6,7 @@ environment:
   myget_token: 'secure: 9Z+KYPk2hI7hg9kYLv/N13fvoqcYCP96isNUkRrKu0v87cw85H62oe/DCwpqvBXF'
 install:
 - choco install gitversion.portable -pre -y
+- choco install resharper-clt -y
 - cmd: nuget sources add -Name EPiServerFeed -Source http://nuget.episerver.com/feed/packages.svc/
 before_build:
 - cmd: nuget restore
@@ -14,6 +15,8 @@ build:
   project: EPi.Libraries.DeviceDetection.sln
   verbosity: normal
 after_build:
+- cmd: dupfinder.exe EPi.Libraries.DeviceDetection.sln
+- cmd: InspectCode.exe EPi.Libraries.DeviceDetection.sln
 - cmd: nuget pack EPi.Libraries.DeviceDetection\EPi.Libraries.DeviceDetection.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
 - cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.%GitVersion_NuGetVersion%.nupkg"
 - cmd: nuget pack EPi.Libraries.DeviceDetection.FiftyOne\EPi.Libraries.DeviceDetection.FiftyOne.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
