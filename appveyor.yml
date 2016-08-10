@@ -15,7 +15,7 @@ build:
   verbosity: normal
 after_build:
 - cmd: nuget pack EPi.Libraries.DeviceDetection\EPi.Libraries.DeviceDetection.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
-- cmd: appveyor PushArtifact "EPi.Libraries.Commerce.ExchangeRates.%GitVersion_NuGetVersion%.nupkg"
+- cmd: appveyor PushArtifact "EPi.Libraries.Commerce.DeviceDetection.%GitVersion_NuGetVersion%.nupkg"
 - cmd: nuget pack EPi.Libraries.DeviceDetection.FiftyOne\EPi.Libraries.DeviceDetection.FiftyOne.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
 - cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.FiftyOne.%GitVersion_NuGetVersion%.nupkg"
 - cmd: nuget pack EPi.Libraries.DeviceDetection.FiftyOneCloud\EPi.Libraries.DeviceDetection.FiftyOneCloud.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
