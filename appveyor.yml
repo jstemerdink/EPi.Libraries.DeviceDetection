@@ -11,7 +11,7 @@ before_build:
 - cmd: nuget restore
 - ps: gitversion /l console /output buildserver /updateAssemblyInfo
 build:
-  project: EPi.Libraries.Commerce.ExchangeRates.sln
+  project: EPi.Libraries.DeviceDetection.sln
   verbosity: normal
 after_build:
 - cmd: nuget pack EPi.Libraries.DeviceDetection\EPi.Libraries.DeviceDetection.csproj -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
