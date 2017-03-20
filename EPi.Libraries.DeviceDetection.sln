@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.DeviceDetecti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.DeviceDetection.Wurfl", "EPi.Libraries.DeviceDetection.Wurfl\EPi.Libraries.DeviceDetection.Wurfl.csproj", "{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.DeviceDetection.Tests", "EPi.Libraries.DeviceDetection.Tests\EPi.Libraries.DeviceDetection.Tests.csproj", "{91C0561A-56BF-46FE-9990-5ACBB55AB520}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6BC9328-A60B-4F55-92B7-6ABD7F525ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C0561A-56BF-46FE-9990-5ACBB55AB520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C0561A-56BF-46FE-9990-5ACBB55AB520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C0561A-56BF-46FE-9990-5ACBB55AB520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C0561A-56BF-46FE-9990-5ACBB55AB520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
