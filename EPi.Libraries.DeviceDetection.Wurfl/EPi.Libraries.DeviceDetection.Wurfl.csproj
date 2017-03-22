@@ -163,6 +163,7 @@
     <Compile Include="WurflAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="EPi.Libraries.DeviceDetection.Wurfl.nuspec" />
     <None Include="EPi.Libraries.DeviceDetection.Wurfl.ruleset" />
     <None Include="EPiServer.Libraries.snk" />
