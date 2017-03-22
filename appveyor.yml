@@ -8,8 +8,9 @@ install:
 - choco install gitversion.portable -pre -y
 - cmd: nuget sources add -Name EPiServerFeed -Source http://nuget.episerver.com/feed/packages.svc/
 before_build:
- ps: >-
+- ps: >-
     Write-Host -NoNewline "Installing NuGet 3.3.0..."
+
     if (Test-Path 'C:\Tools\NuGet3') { $nugetDir = 'C:\Tools\NuGet3' } else { $nugetDir = 'C:\Tools\NuGet' }
 - cmd: nuget restore
 - ps: gitversion /l console /output buildserver /updateAssemblyInfo
