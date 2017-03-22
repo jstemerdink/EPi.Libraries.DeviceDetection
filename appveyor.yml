@@ -8,6 +8,9 @@ install:
 - choco install gitversion.portable -pre -y
 - cmd: nuget sources add -Name EPiServerFeed -Source http://nuget.episerver.com/feed/packages.svc/
 before_build:
+ ps: >-
+    Write-Host -NoNewline "Installing NuGet 3.3.0..."
+    if (Test-Path 'C:\Tools\NuGet3') { $nugetDir = 'C:\Tools\NuGet3' } else { $nugetDir = 'C:\Tools\NuGet' }
 - cmd: nuget restore
 - ps: gitversion /l console /output buildserver /updateAssemblyInfo
 build:
@@ -34,11 +37,11 @@ after_build:
 - cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.Wurfl.%GitVersion_NuGetVersion%.zip"
 - 7z a EPi.Libraries.DeviceDetection.WurflCloud.%GitVersion_NuGetVersion%.zip %APPVEYOR_BUILD_FOLDER%\EPi.Libraries.DeviceDetection.WurflCloud\bin\Release\EPi.Libraries.DeviceDetection.WurflCloud.dll
 - cmd: appveyor PushArtifact "EPi.Libraries.DeviceDetection.WurflCloud.%GitVersion_NuGetVersion%.zip"
-before_package:
-- ps: >-
-    Write-Host -NoNewline "Installing NuGet 3.3.0..."
-
-    if (Test-Path 'C:\Tools\NuGet3') { $nugetDir = 'C:\Tools\NuGet3' } else { $nugetDir = 'C:\Tools\NuGet' }
+#before_package:
+#- ps: >-
+#    Write-Host -NoNewline "Installing NuGet 3.3.0..."
+#
+#    if (Test-Path 'C:\Tools\NuGet3') { $nugetDir = 'C:\Tools\NuGet3' } else { $nugetDir = 'C:\Tools\NuGet' }
 deploy:
 - provider: NuGet
   server: https://www.myget.org/F/epi-libraries/api/v2/package
