@@ -5,7 +5,7 @@ By Jeroen Stemerdink
 [![Build status](https://ci.appveyor.com/api/projects/status/60vg1xeix98n9w3o/branch/master?svg=true)](https://ci.appveyor.com/project/jstemerdink/epi-libraries-devicedetection/branch/master)
 [![GitHub version](https://badge.fury.io/gh/jstemerdink%2FEPi.Libraries.DeviceDetection.svg)](http://badge.fury.io/gh/jstemerdink%2FEPi.Libraries.DeviceDetection)
 [![Platform](https://img.shields.io/badge/platform-.NET%204.5.2-blue.svg?style=flat)](https://msdn.microsoft.com/en-us/library/w0x726c2%28v=vs.110%29.aspx)
-[![Platform](https://img.shields.io/badge/EPiServer-%2010.0.0-orange.svg?style=flat)](http://world.episerver.com/cms/)  
+[![Platform](https://img.shields.io/badge/EPiServer-%2010.0.1-orange.svg?style=flat)](http://world.episerver.com/cms/)  
 
 ## Description
 
